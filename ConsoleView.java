@@ -32,6 +32,8 @@ public class ConsoleView implements View {
 					this_box = "E";
 				} if (row == playerY && col == playerX) {
 					this_box = "#";
+				} if (world.getWallBool(row, col)) {
+					this_box = ",";
 				}
 				System.out.print(this_box);
 			
