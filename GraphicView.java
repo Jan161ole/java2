@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 
 import model.World;
@@ -39,6 +41,11 @@ public class GraphicView extends JPanel implements View {
 	private final Rectangle end = new Rectangle(1,1);
 
 
+	///////////////////////////////////////////////
+	/**List of the wall's rectangles. */
+	private final ArrayList<Rectangle> walls = new ArrayList<>();
+
+
 	/**
 	 * Creates a new instance.
 	 */
@@ -56,6 +63,17 @@ public class GraphicView extends JPanel implements View {
 		// Paint player
 		g.setColor(Color.BLACK);
 		g.fillRect(player.x, player.y, player.width, player.height);
+
+		for (int row = 0; row < 10; row++) {
+			for (int col = 0; col < 10; col++){
+				if (World.getWallBool(row, col)){
+					g.setColor(Color.CYAN);
+					g.fillRect(row, col, 1, 1);
+				}
+	
+			}
+
+		}
 
 	}
 
@@ -83,6 +101,14 @@ public class GraphicView extends JPanel implements View {
 		player.setLocation(
 			(int) (world.getPlayerX() * fieldDimension.width),
 			(int) (world.getPlayerY() * fieldDimension.height)
+		);
+		repaint();
+
+		// Update players size and location
+		walls.setSize(fieldDimension);
+		walls.setLocation(
+			(int) (walls.getWallsX() * fieldDimension.width),
+			(int) (walls.getWallsY() * fieldDimension.height)
 		);
 		repaint();
 	}
