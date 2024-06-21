@@ -22,18 +22,25 @@ public class ConsoleView implements View {
 		int endX = world.getEndX();
 		int endY = world.getEndY();
 
-		for (int row = 0; row < world.getHeight(); row++) {
-			for (int col = 0; col < world.getWidth(); col++) {
+		//The Enemy's position
+		int enemyX = world.myEnemy.getEnemyX();
+		int enemyY = world.myEnemy.getEnemyY();
+
+		for (int col = 0; col < world.getHeight(); col++) {
+			for (int row = 0; row < world.getWidth(); row++) {
 				// If the player is here, print #, otherwise print.
 				String this_box = ".";
-				if (row == startY && col == startX) {
+				if (row == startX && col == startY) {
 					this_box = "S";
-				} if (row == endY && col == endX) {
+				} if (row == endX && col == endY) {
 					this_box = "E";
-				} if (row == playerY && col == playerX) {
+				} if (row == playerX && col == playerY) {
 					this_box = "#";
-				} if (world.getWallBool(row, col)) {
-					this_box = ",";
+				} if (row == enemyX && col == enemyY) {
+					this_box = "O";
+				}
+				 if (world.getWallBool(col, row)) {
+					this_box = "\u2588";
 				}
 				System.out.print(this_box);
 			
