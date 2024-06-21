@@ -66,6 +66,10 @@ public class Controller extends JFrame implements KeyListener, ActionListener, M
 		case KeyEvent.VK_RIGHT:
 			world.movePlayer(Direction.RIGHT);
 			break;
+		
+		case KeyEvent.VK_ESCAPE:
+			world.resetGame();
+			break;
 		}
 	}
 

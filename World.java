@@ -21,6 +21,10 @@ public class World {
 	private int playerX = 0;
 	/** The player's y position in the world. */
 	private int playerY = 0;
+	/** The player's x startposition in the world. */
+	private int startPlayerX = 0;
+	/** The player's y startposition in the world. */
+	private int startPlayerY = 0;
 	
 	/** The Start's x position in the world */
 	private int startX = 0;
@@ -35,7 +39,7 @@ public class World {
 	/**The positions of the Walls by row */
 	private static final ArrayList<Boolean> wals0 = new ArrayList<>(Arrays.asList(false, false, false, true, false, false, false, false, true, false));
 	private static final ArrayList<Boolean> wals1 = new ArrayList<>(Arrays.asList(false, true, false, true, false, true, true, true, true, false));
-	private static final ArrayList<Boolean> wals2 = new ArrayList<>(Arrays.asList(false, true, false, true, false, false, false, false, false, false));
+	private static final ArrayList<Boolean> wals2 = new ArrayList<>(Arrays.asList(false, true, false, true, false, true, false, false, false, false));
 	private static final ArrayList<Boolean> wals3 = new ArrayList<>(Arrays.asList(false, true, true, true, false, true, false, true, true, true));
 	private static final ArrayList<Boolean> wals4 = new ArrayList<>(Arrays.asList(false, true, false, false, false, false, false, false, true, false));
 	private static final ArrayList<Boolean> wals5 = new ArrayList<>(Arrays.asList(false, true, false, true, true, true, true, false, true, false));
@@ -263,6 +267,21 @@ public class World {
 			setPlayerX(newPlayerX);
 			setPlayerY(newPlayerY);
 		}
+
+		if (newPlayerX == endX && newPlayerY == endY) {
+			resetGame();
+		}
+	}
+
+	/**
+	 * Resets all players and enemys.
+	 * 
+	 */
+	public void resetGame() {
+		//move the Player back to the start.
+		setPlayerX(startPlayerX);
+		setPlayerY(startPlayerY);
+
 	}
 
 	///////////////////////////////////////////////////////////////////////////
