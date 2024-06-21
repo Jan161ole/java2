@@ -33,19 +33,19 @@ public class World {
 	private int endY = 0;
 
 	/**The positions of the Walls by row */
-	private final ArrayList<Boolean> wals0 = new ArrayList<>(Arrays.asList(false, false, false, true, false, false, false, false, true, false));
-	private final ArrayList<Boolean> wals1 = new ArrayList<>(Arrays.asList(false, true, false, true, false, true, true, true, true, false));
-	private final ArrayList<Boolean> wals2 = new ArrayList<>(Arrays.asList(false, true, false, true, false, false, false, false, false, false));
-	private final ArrayList<Boolean> wals3 = new ArrayList<>(Arrays.asList(false, true, true, true, false, true, false, true, true, true));
-	private final ArrayList<Boolean> wals4 = new ArrayList<>(Arrays.asList(false, true, false, false, false, false, false, false, true, false));
-	private final ArrayList<Boolean> wals5 = new ArrayList<>(Arrays.asList(false, true, false, true, true, true, true, false, true, false));
-	private final ArrayList<Boolean> wals6 = new ArrayList<>(Arrays.asList(false, false, false, false, false, true, false, false, false, false));
-	private final ArrayList<Boolean> wals7 = new ArrayList<>(Arrays.asList(false, true, true, true, false, true, true, true, true, false));
-	private final ArrayList<Boolean> wals8 = new ArrayList<>(Arrays.asList(false, false, false, true, false, true, false, true, false, false));
-	private final ArrayList<Boolean> wals9 = new ArrayList<>(Arrays.asList(false, true, true, true, false, false, false, true, false, false));
+	private static final ArrayList<Boolean> wals0 = new ArrayList<>(Arrays.asList(false, false, false, true, false, false, false, false, true, false));
+	private static final ArrayList<Boolean> wals1 = new ArrayList<>(Arrays.asList(false, true, false, true, false, true, true, true, true, false));
+	private static final ArrayList<Boolean> wals2 = new ArrayList<>(Arrays.asList(false, true, false, true, false, false, false, false, false, false));
+	private static final ArrayList<Boolean> wals3 = new ArrayList<>(Arrays.asList(false, true, true, true, false, true, false, true, true, true));
+	private static final ArrayList<Boolean> wals4 = new ArrayList<>(Arrays.asList(false, true, false, false, false, false, false, false, true, false));
+	private static final ArrayList<Boolean> wals5 = new ArrayList<>(Arrays.asList(false, true, false, true, true, true, true, false, true, false));
+	private static final ArrayList<Boolean> wals6 = new ArrayList<>(Arrays.asList(false, false, false, false, false, true, false, false, false, false));
+	private static final ArrayList<Boolean> wals7 = new ArrayList<>(Arrays.asList(false, true, true, true, false, true, true, true, true, false));
+	private static final ArrayList<Boolean> wals8 = new ArrayList<>(Arrays.asList(false, false, false, true, false, true, false, true, false, false));
+	private static final ArrayList<Boolean> wals9 = new ArrayList<>(Arrays.asList(false, true, true, true, false, false, false, true, false, false));
 
 	/**The positions of the Walls combined */
-	private ArrayList<ArrayList<Boolean> > walls = new ArrayList<>(Arrays.asList(wals0, wals1, wals2, wals3, wals4, wals5, wals6, wals7, wals8, wals9));
+	private static ArrayList<ArrayList<Boolean> > walls = new ArrayList<>(Arrays.asList(wals0, wals1, wals2, wals3, wals4, wals5, wals6, wals7, wals8, wals9));
 
 
 	
@@ -228,7 +228,7 @@ public class World {
 	 * 
 	 * @return the wall's boolean value at a posittion.
 	 */
-	public boolean getWallBool(int x, int y) {
+	public static boolean getWallBool(int x, int y) {
 		return walls.get(x).get(y); 
 	}
 
