@@ -41,11 +41,6 @@ public class GraphicView extends JPanel implements View {
 	private final Rectangle end = new Rectangle(1,1);
 
 
-	///////////////////////////////////////////////
-	/**List of the wall's rectangles. */
-	private final ArrayList<Rectangle> walls = new ArrayList<>();
-
-
 	/**
 	 * Creates a new instance.
 	 */
@@ -68,12 +63,13 @@ public class GraphicView extends JPanel implements View {
 			for (int col = 0; col < 10; col++){
 				if (World.getWallBool(row, col)){
 					g.setColor(Color.CYAN);
-					g.fillRect(row, col, 1, 1);
+					g.fillRect(col*25, row*25, 25, 25);
 				}
 	
 			}
 
 		}
+		
 
 	}
 
@@ -105,10 +101,10 @@ public class GraphicView extends JPanel implements View {
 		repaint();
 
 		// Update players size and location
-		walls.setSize(fieldDimension);
-		walls.setLocation(
-			(int) (walls.getWallsX() * fieldDimension.width),
-			(int) (walls.getWallsY() * fieldDimension.height)
+		player.setSize(fieldDimension);
+		player.setLocation(
+			(int) (world.getPlayerX() * fieldDimension.width),
+			(int) (world.getPlayerY() * fieldDimension.height)
 		);
 		repaint();
 	}

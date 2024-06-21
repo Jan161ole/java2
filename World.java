@@ -232,7 +232,15 @@ public class World {
 		return walls.get(x).get(y); 
 	}
 
-
+	////
+	/**
+	 * Returns the list of  Wall's.
+	 * 
+	 * @return the list of Wall's.
+	 */
+    public static ArrayList<ArrayList<Boolean>> getWalls() {
+        return walls;
+	}
 
 	///////////////////////////////////////////////////////////////////////////
 	// Player Management
@@ -245,8 +253,16 @@ public class World {
 	public void movePlayer(Direction direction) {	
 		// The direction tells us exactly how much we need to move along
 		// every direction
-		setPlayerX(getPlayerX() + direction.deltaX);
-		setPlayerY(getPlayerY() + direction.deltaY);
+
+		//check if new position is okay
+		
+		int newPlayerX = (getPlayerX() + direction.deltaX);
+		int newPlayerY = (getPlayerY() + direction.deltaY);
+
+		if (!getWallBool(newPlayerY, newPlayerX)){
+			setPlayerX(newPlayerX);
+			setPlayerY(newPlayerY);
+		}
 	}
 
 	///////////////////////////////////////////////////////////////////////////
