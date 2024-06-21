@@ -70,6 +70,15 @@ public class Controller extends JFrame implements KeyListener, ActionListener, M
 		case KeyEvent.VK_ESCAPE:
 			world.resetGame();
 			break;
+		case KeyEvent.VK_0:
+			world.setdifficulty(0);;
+			break;
+		case KeyEvent.VK_1:
+			world.setdifficulty(1);;
+			break;
+		case KeyEvent.VK_2:
+			world.setdifficulty(2);;
+			break;
 		}
 	}
 

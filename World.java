@@ -36,8 +36,10 @@ public class World {
 	/** The end's y position in the world */
 	private int endY = 0;
 
+	private static int difficulty = 0;
+
 	/**The positions of the Walls by row */
-	private static final ArrayList<Boolean> wals0 = new ArrayList<>(Arrays.asList(false, false, false, true, false, false, false, false, true, false));
+	private static final ArrayList<Boolean> wals0 = new ArrayList<>(Arrays.asList(false, false, false, true, false, false, false, false, false, false));
 	private static final ArrayList<Boolean> wals1 = new ArrayList<>(Arrays.asList(false, true, false, true, false, true, true, true, true, false));
 	private static final ArrayList<Boolean> wals2 = new ArrayList<>(Arrays.asList(false, true, false, true, false, true, false, false, false, false));
 	private static final ArrayList<Boolean> wals3 = new ArrayList<>(Arrays.asList(false, true, true, true, false, true, false, true, true, true));
@@ -50,6 +52,8 @@ public class World {
 
 	/**The positions of the Walls combined */
 	private static ArrayList<ArrayList<Boolean> > walls = new ArrayList<>(Arrays.asList(wals0, wals1, wals2, wals3, wals4, wals5, wals6, wals7, wals8, wals9));
+
+	public static Enemy myEnemy = new Enemy(difficulty);
 
 
 	
@@ -246,6 +250,20 @@ public class World {
         return walls;
 	}
 
+
+	/**
+	 * Sets the diffuculty.
+	 * 
+	 * @param endY the end's y position.
+	 */
+	public void setdifficulty(int diffuculty) {
+		this.difficulty = diffuculty;
+		
+		updateViews();
+	}
+
+
+
 	///////////////////////////////////////////////////////////////////////////
 	// Player Management
 	
@@ -271,6 +289,13 @@ public class World {
 		if (newPlayerX == endX && newPlayerY == endY) {
 			resetGame();
 		}
+
+		if (newPlayerX == myEnemy.getEnemyX() && newPlayerY == myEnemy.getEnemyY()) {
+			resetGame();
+		}
+		myEnemy.move(direction);
+
+		updateViews();
 	}
 
 	/**
@@ -281,6 +306,8 @@ public class World {
 		//move the Player back to the start.
 		setPlayerX(startPlayerX);
 		setPlayerY(startPlayerY);
+		myEnemy = new Enemy(difficulty);
+		updateViews();
 
 	}
 

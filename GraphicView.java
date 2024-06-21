@@ -40,6 +40,8 @@ public class GraphicView extends JPanel implements View {
 	/** The end rectangle. */
 	private final Rectangle end = new Rectangle(1,1);
 
+	private final Rectangle enemy1 = new Rectangle(1,1);
+
 
 	/**
 	 * Creates a new instance.
@@ -58,6 +60,9 @@ public class GraphicView extends JPanel implements View {
 		// Paint player
 		g.setColor(Color.BLACK);
 		g.fillRect(player.x, player.y, player.width, player.height);
+
+		g.setColor(Color.yellow);
+		g.fillRect(enemy1.x, enemy1.y, enemy1.width, enemy1.height);
 
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 10; col++){
@@ -107,7 +112,18 @@ public class GraphicView extends JPanel implements View {
 			(int) (world.getPlayerY() * fieldDimension.height)
 		);
 		repaint();
-	}
+
+			
+		// Update enemy size and location
+		enemy1.setSize(fieldDimension);
+		enemy1.setLocation(
+			(int) (World.myEnemy.getEnemyX() * fieldDimension.width),
+			(int) (World.myEnemy.getEnemyY() * fieldDimension.height)
+		);
+		repaint();
 	
+	}
+
+
 
 }
